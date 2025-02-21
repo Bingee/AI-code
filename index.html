@@ -27,6 +27,7 @@
 
         .main-title {
             font-size: 40px;
+            margin-top: 0px;
             margin-bottom: 4px;
             color: #333;
             font-family: 'AlipuHui';
@@ -36,7 +37,7 @@
         .sub-title {
             font-size: 19px;
             color: #666;
-            margin-top: 4px;
+            margin-top: 0px;
             margin-bottom: 60px;
             font-family: 'AlipuHui';
         }
@@ -120,7 +121,7 @@
     </style>
 </head>
 <body>
-    <canvas id="rive-canvas" width="400" height="400"></canvas>
+    <canvas id="rive-canvas" width="800" height="800" style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;"></canvas>
     <h1 class="main-title">Hello AI code</h1>
     <p class="sub-title">A brand new world that belongs to you.</p>
     <div class="button-container">
@@ -138,18 +139,20 @@
             canvas: document.getElementById('rive-canvas'),
             autoplay: true,
             stateMachines: 'State Machine 1',
-            fit: rive.Fit.contain
+            fit: rive.Fit.contain,
+            renderer: 'canvas',
+            pixelRatio: window.devicePixelRatio || 2
         });
         
         function createConfetti() {
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < 200; i++) {
                 const confetti = document.createElement('div');
                 confetti.className = 'confetti';
                 confetti.style.left = Math.random() * 100 + 'vw';
                 confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
                 confetti.style.animationDelay = Math.random() * 2 + 's';
                 document.body.appendChild(confetti);
-                setTimeout(() => confetti.remove(), 3000);
+                setTimeout(() => confetti.remove(), 15000);
             }
         }
 
